@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "active_datasets": [
+    {
+      "id": "python_variables",
+      "path": "python/syntax/variables.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "python_data_types",
+      "path": "python/syntax/data_types.jsonl",
+      "enabled": true
+    },
+    {
+      "id": "python_operators",
+      "path": "python/syntax/operators.jsonl",
+      "enabled": true
+    }
+  ]
+}

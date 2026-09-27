@@ -1,0 +1,10 @@
+{
+  "dataset_name": "python-coding-agent-data",
+  "version": "1.0.0",
+  "description": "Python programming curriculum and training data for the Python coding assistant RL experiment.",
+  "format": "jsonl",
+  "language": "python",
+  "current_phase": "phase_1_basic_syntax",
+  "maintainer": "local",
+  "created_for": "python-coding-agent-rl"
+}

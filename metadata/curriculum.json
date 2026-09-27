@@ -1,0 +1,60 @@
+{
+  "curriculum_version": "1.0",
+
+  "phases": [
+    {
+      "phase": 1,
+      "name": "basic_python_syntax",
+      "status": "active",
+      "topics": [
+        "variables",
+        "data_types",
+        "operators"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "control_flow",
+      "status": "planned",
+      "topics": [
+        "conditions",
+        "loops"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "functions",
+      "status": "planned",
+      "topics": [
+        "functions"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "data_structures",
+      "status": "planned",
+      "topics": [
+        "lists",
+        "tuples",
+        "dictionaries",
+        "sets"
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "error_handling",
+      "status": "planned",
+      "topics": [
+        "exceptions"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "object_oriented_python",
+      "status": "planned",
+      "topics": [
+        "classes"
+      ]
+    }
+  ]
+}

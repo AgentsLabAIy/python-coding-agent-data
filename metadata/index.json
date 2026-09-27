@@ -1,0 +1,214 @@
+{
+  "schema_registry": {
+    "name": "python-coding-agent-training-data",
+    "version": "1.0.0",
+    "description": "Central registry defining the metadata schema used by all JSONL training-data files.",
+    "schema_change_policy": "Manual update required whenever the metadata schema is enhanced, changed, renamed, added, or removed.",
+    "datasets": {
+      "variables.jsonl": {
+        "topic": "variables",
+        "metadata_schema": "python_training_record_v1"
+      },
+      "data_types.jsonl": {
+        "topic": "data_types",
+        "metadata_schema": "python_training_record_v1"
+      },
+      "operators.jsonl": {
+        "topic": "operators",
+        "metadata_schema": "python_training_record_v1"
+      },
+      "tuples.jsonl": {
+        "topic": "tuples",
+        "metadata_schema": "python_training_record_v1"
+      },
+      "lists.jsonl": {
+        "topic": "lists",
+        "metadata_schema": "python_training_record_v1"
+      },
+      "dictionaries.jsonl": {
+        "topic": "dictionaries",
+        "metadata_schema": "python_training_record_v1"
+      }
+    }
+  },
+
+  "schemas": {
+    "python_training_record_v1": {
+      "description": "Common metadata and training-record schema used by Python coding-agent datasets.",
+      "fields": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "description": "Globally unique identifier for the training example within the dataset.",
+          "example": "VAR001"
+        },
+        "topic": {
+          "type": "string",
+          "required": true,
+          "description": "Primary Python topic represented by the training example.",
+          "allowed_values": [
+            "variables",
+            "data_types",
+            "operators",
+            "tuples",
+            "lists",
+            "dictionaries"
+          ]
+        },
+        "namespace": {
+          "type": "string",
+          "required": true,
+          "description": "Python namespace or conceptual namespace to which the example belongs.",
+          "example": "builtins"
+        },
+        "concept": {
+          "type": "string",
+          "required": true,
+          "description": "Specific Python concept being taught.",
+          "example": "list_indexing"
+        },
+        "convention": {
+          "type": "string",
+          "required": true,
+          "description": "Python naming, syntax, usage, or behavioral convention demonstrated by the example.",
+          "example": "zero_based_indexing"
+        },
+        "reservation": {
+          "type": "string",
+          "required": true,
+          "description": "Indicates whether the identifier, syntax, or concept has a Python language reservation or special restriction.",
+          "example": "none"
+        },
+        "visibility": {
+          "type": "string",
+          "required": true,
+          "description": "Conceptual visibility classification of the identifier or construct.",
+          "allowed_values": [
+            "public",
+            "internal",
+            "special"
+          ]
+        },
+        "identifier_type": {
+          "type": "string",
+          "required": true,
+          "description": "Classification of the Python construct represented by the example.",
+          "example": "variable"
+        },
+        "difficulty": {
+          "type": "string",
+          "required": true,
+          "description": "Relative learning difficulty of the example.",
+          "allowed_values": [
+            "basic",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "prompt": {
+          "type": "string",
+          "required": true,
+          "description": "Natural-language coding task presented to the model."
+        },
+        "solution": {
+          "type": "string",
+          "required": true,
+          "description": "Reference Python solution for the prompt."
+        },
+        "expected_output": {
+          "type": "string",
+          "required": true,
+          "description": "Expected stdout or expected result representation produced by the reference solution."
+        },
+        "validation_type": {
+          "type": "string",
+          "required": true,
+          "description": "Method used to validate the generated solution or output.",
+          "allowed_values": [
+            "exact_output",
+            "expected_error"
+          ]
+        },
+        "expected_error": {
+          "type": "string",
+          "required": false,
+          "description": "Expected Python exception when validation_type is expected_error.",
+          "example": "TypeError"
+        }
+      }
+    }
+  },
+
+  "metadata_fields": {
+    "id": {
+      "category": "record_identity",
+      "required": true
+    },
+    "topic": {
+      "category": "dataset_classification",
+      "required": true
+    },
+    "namespace": {
+      "category": "semantic_classification",
+      "required": true
+    },
+    "concept": {
+      "category": "semantic_classification",
+      "required": true
+    },
+    "convention": {
+      "category": "python_convention",
+      "required": true
+    },
+    "reservation": {
+      "category": "python_language_rule",
+      "required": true
+    },
+    "visibility": {
+      "category": "visibility_classification",
+      "required": true
+    },
+    "identifier_type": {
+      "category": "construct_classification",
+      "required": true
+    },
+    "difficulty": {
+      "category": "curriculum",
+      "required": true
+    },
+    "prompt": {
+      "category": "training_data",
+      "required": true
+    },
+    "solution": {
+      "category": "training_data",
+      "required": true
+    },
+    "expected_output": {
+      "category": "validation",
+      "required": true
+    },
+    "validation_type": {
+      "category": "validation",
+      "required": true
+    },
+    "expected_error": {
+      "category": "validation",
+      "required": false
+    }
+  },
+
+  "schema_evolution": {
+    "owner": "training-data-maintainer",
+    "automatic_schema_changes": false,
+    "manual_review_required": true,
+    "procedure": [
+      "Determine the required schema change.",
+      "Update metadata/index.json manually.",
+      "Increment the schema version.",
+      "Update affected JSONL records.",
+      "Update the data-loader/validator in python-coding-agent-rl if required.",
+      "Validate all JSONL datasets against the updated schema before training."
+    ]
+  }
+}
